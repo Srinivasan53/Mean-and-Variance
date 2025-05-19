@@ -1,58 +1,73 @@
-#  Mean and variance of a discrete  distribution
+```
+NAME: SRINIVASA S
+REG NO: 212224220105
+```
+Aim :
 
+To find (a) average number of materials in the system (b) average number of materials in the each conveyor of (c) waiting time of each material in the system (d) waiting time of each material in each conveyor, if the arrival of materials follow Poisson process with the mean interval time 12 seconds, service time of lathe machine in series follow exponential distribution with service time 1 second, 1.5 seconds and 1.3 seconds respectively and average service time of robot is 7 seconds.
 
-# Aim : 
+Software required :
 
-To find mean and variance of arrival of objects from the feeder using probability distribution
+Visual components and Python
 
+Theory
 
-# Software required :  
+![image](https://github.com/user-attachments/assets/ad6b96da-e016-48a4-bdc5-f37caafd7782)
 
-Python and Visual components tool
+Procedure :
 
-# Theory:
+![image](https://github.com/user-attachments/assets/93e9f2ef-88b8-41a9-b831-94a117b050e9)
 
-The expectation or the mean of a discrete random variable is a weighted average of all possible
-values of the random variable. The weights are the probabilities associated with the corresponding values. 
-It is calculated as,
+Experiment:
 
-![image](https://user-images.githubusercontent.com/103921593/192938463-e34177f4-f188-48a0-bda2-8f6d1d660ed2.png)
+![image](https://github.com/user-attachments/assets/2fed721b-1497-487a-ac0a-f114644e8dc5)
 
-The variance of a random variable shows the variability or the scatterings of the random variables.
-It shows the distance of a random variable from its mean. It is calcualted as
+![image](https://github.com/user-attachments/assets/c46e73c7-413c-4d4e-af23-4db65d379c80)
 
-![image](https://user-images.githubusercontent.com/103921593/192938695-99fedc01-34d5-4d36-84df-5880e766ed0c.png)
+Program
 
+arr_time=float(input("Enter the mean inter arrival time of objects from Feeder (in secs): "))
+ser_time1=float(input("Enter the mean  inter service time of Lathe Machine 1 (in secs) :  "))
+ser_time2=float(input("Enter the mean  inter service time of Lathe Machine 2 (in secs) :  "))
+ser_time3=float(input("Enter the mean  inter service time of Lathe Machine 3 (in secs) :  "))
+Robot_time=float(input("Enter the Additional time taken for the Robot (in secs) :  "))
+lam=1/arr_time
+mu1=1/(ser_time1+Robot_time)
+mu2=1/(ser_time2+Robot_time)
+mu3=1/(ser_time3+Robot_time)
+print("-----------------------------------------------------------------------")
+print("Series Queues with infinite capacity- Open Jackson Network")
+print("-----------------------------------------------------------------------")
+if (lam <  mu1) and (lam <  mu2) and (lam <  mu3):
+    Ls1=lam/(mu1-lam)
+    Ls2=lam/(mu2-lam)
+    Ls3=lam/(mu3-lam)
+    Ls=Ls1+Ls2+Ls3
+    Lq1=Ls1-lam/mu1
+    Lq2=Ls2-lam/mu2
+    Lq3=Ls3-lam/mu3
+    Wq1=Lq1/lam
+    Wq2=Lq2/lam
+    Wq3=Lq3/lam
+    Ws=Ls/(3*lam)
+    print("Average number of objects in the system S1 : %0.2f "%Ls1)
+    print("Average number of objects in the system S2 : %0.2f "%Ls2)
+    print("Average number of objects in the system S3 : %0.2f "%Ls3)
+    print("Average number of objects in the overall system    : %0.2f "%Ls)
+    print("Average number of objects in the conveyor S1  :  %0.2f "%Lq1)
+    print("Average number of objects in the conveyor S2  :  %0.2f "%Lq2)
+    print("Average number of objects in the conveyor S3  :  %0.2f "%Lq3)
+    print("Average waiting time of an object in the conveyor S1 : %0.2f secs"%Wq1)
+    print("Average waiting time of an object in the conveyor S2 : %0.2f secs"%Wq2)
+    print("Average waiting time of an object in the conveyor S3 : %0.2f secs"%Wq3)
+else:
+    print("Warning! Objects Over flow will happen in the conveyor")
+print("----------------------------------------------------------------------")
 
-# Procedure :
+Output:
 
-1. Construct frequency distribution for the data
+![image](https://github.com/user-attachments/assets/06dc6611-f3f0-4016-9cfd-2fa0f14f8b73)
 
-2. Find the  probability distribution from frequency distribution.
+Result:
 
-3. Calculate mean using 
-   
-   ![image](https://user-images.githubusercontent.com/103921593/192940431-03b81777-c54d-4286-b4f4-82dfe7666b4c.png)
-
-4. Find  
-   
-      ![image](https://user-images.githubusercontent.com/103921593/192940255-2d9dd746-6875-4a6d-877b-6da6cdb96ab1.png)
-
-5.  Calculate variance using 
-  
-      ![image](https://user-images.githubusercontent.com/103921593/192942852-913550a9-fabe-4a55-b956-0487b18bbd97.png)
-
-
-# Experiment :
-
-![image](https://user-images.githubusercontent.com/103921593/229993174-5b67e57e-3e01-4ac4-9f83-410a932b22bf.png)
-
-# Program :
-
-
-
-# Output : 
-
-# Results :
-The mean and variance of arrivals of objects from feeder using probability distribution are calculated.
-
+The average number of material in the sysytem and in the conveyor and waiting time are successfully found
